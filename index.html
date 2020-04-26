@@ -1,0 +1,54 @@
+<!--
+  -->
+
+<html>
+  <head><title> Picky </title> </head>
+  <body>
+    <script src="picky.js"></script>
+    <h1> Picky </h1>
+
+    <p>
+      This pool will randomly assign prizes to a group of contestants.
+      There must be more contestants than prizes.
+    </p>
+    <p>
+      To duplicate a line in either box, enter it like this:
+      <tt style="background-color: #ddeedd">10x General Electric Toaster</tt>
+    </p>
+    
+    <h2> Contestants </h2>
+    Enter contestants, one per line.
+    <br>
+    <textarea cols="60" rows="10" id="contestants"
+              style="background-color: #fafafa">
+    </textarea>
+    <br>
+    <button onclick="insertData('names.txt', 'contestants');">Or just use some test data.</button>
+
+    <h2> Prizes </h2>
+    Enter prizes, one per line.
+    <br>
+    <textarea cols="60" rows="10" id="prizes"
+              style="background-color: #fafafa">
+    </textarea>
+    <h2> Winners </h2>
+    <button onclick="populateWinners();">Click here to select winners!</button>
+    <br>
+    <textarea cols="60" rows="10" id="out" readonly="true">
+
+      ↑↑↑
+      Click the button above to populate this field
+      based on the values in the two fields above.
+
+    </textarea>
+    <br>
+    <button onclick="insertData('prizes.txt', 'contestants');">Or just use some test data.</button>
+
+    <hr>
+
+    <p>
+      No modern web site is complete without <a href="disclaimers.html">disclaimers</a>.
+    </p>
+    
+  </body>
+</html>

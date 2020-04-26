@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <title> picky disclaimers </title>
+  </head>
+  <body>
+    <h1> picky disclaimers </h1>
+
+    <h2> How this works </h2>
+    <p>
+      We shuffle the player input and assign the "top of the deck" to one prize
+      at a time.  All data resides in your web browser; the data is never
+      uploaded to the server.  The implementation of the "Click here" button is
+      entirely done on your computer.
+    </p>
+
+    <h2> Privacy Policy </h2>
+    <p>
+      This site does not use cookies or store data.  Your data never leaves
+      your browser.
+      <label>Click here <input type="radio" value="yes" name="gdpr"> to accept
+        GDPR protections</label>
+      <label>Click here <input type="radio" value="no" name="gdpr"> to reject
+        GDPR protections</label>.
+      It makes no difference because we don't keep your data.
+      You're welcome?
+    </p>
+    
+    <h2> Randomness </h2>
+    <p>
+      This version uses your browser's JavaScript's built-in Math.random() and
+      the unfortunate realities of JavaScript IEEE-754 floating point.  That's
+      OK for trivial things but I wouldn't recommend it for running your
+      state's lottery.
+    </p>
+    <p>
+      Specifically, we probably introduce a trivial bias by multiplying using
+      the output of Math.random(); we have not verified the implementation of
+      your browser's Math.random(); and the results are not publically
+      verifyable or repeatable because we do not know the state of your
+      browser's PRNG.  So maybe you want a witness or something, I dunno.
+    </p>
+    <p>
+      The names are shuffled using a Fisher-Yates shuffle.  This is known to be
+      generally fair if the RNG is fair, unless there are bugs.  A second
+      random-sort shuffle implementation, helping to guard against bugs in the
+      first shuffle.  This is known to have a small bias, but the
+      implementation is less likely to have bugs.  Combined, they do a good
+      [enough] job.
+    </p>
+
+    <h2> Ugliness </h2>
+    <p>
+      This is not a very attractive web site, or a very clever program.  But
+      it's not bad for a couple hours on a Saturday when I had forgotten
+      JavaScript again, eh?
+    </p>
+
+    <hr>
+
+    <a href=".">Back to picky</a>
+
+  </body>
+</html>
+    
