@@ -178,5 +178,10 @@ function insertData(file, id) {
         console.log("can't find element id:", id);
         return;
     }
+    if (el.value !== "") {
+        if (!confirm("Really throw away data and replace with test data?")) {
+            return;
+        }
+    }
     fetchMy(file, contents => { el.value = contents })
 }
