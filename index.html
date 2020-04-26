@@ -1,10 +1,10 @@
-<!--
-  -->
-
 <html>
-  <head><title> Picky </title> </head>
+  <head>
+    <meta charset="UTF-8">
+    <title> Picky </title>
+  </head>
   <body>
-    <script src="picky.js"></script>
+    <script src="picky.js?v=8"></script>
     <h1> Picky </h1>
 
     <p>
@@ -14,35 +14,58 @@
     <p>
       To duplicate a line in either box, enter it like this:
       <tt style="background-color: #ddeedd">10x General Electric Toaster</tt>
+      Blank lines and leading and trailing spaces are ignored.
     </p>
     
     <h2> Contestants </h2>
-    Enter contestants, one per line.
+    <textarea cols="70" rows="10" id="contestants"
+              style="background-color: #fafafa"
+              placeholder="
+Enter contestants in this box, one per line.  Like this:
+
+Abraham Lincoln
+9x George Washington (George gets 9 chances and can win 9 times)
+
+Blank lines and stray spaces will be ignored."
+              ></textarea>
     <br>
-    <textarea cols="60" rows="10" id="contestants"
-              style="background-color: #fafafa">
-    </textarea>
-    <br>
-    <button onclick="insertData('names.txt', 'contestants');">Or just use some test data.</button>
 
     <h2> Prizes </h2>
-    Enter prizes, one per line.
+    <textarea cols="70" rows="10" id="prizes"
+              style="background-color: #fafafa"
+              placeholder="
+Enter prizes in this box, one per line.  Like this:
+
+Disneyland 2-Day Pass
+100x Pencil  (there are 100 pencils to give away)
+
+Blank lines and stray spaces will be ignored.
+"
+              ></textarea>
     <br>
-    <textarea cols="60" rows="10" id="prizes"
-              style="background-color: #fafafa">
-    </textarea>
+    
     <h2> Winners </h2>
-    <button onclick="populateWinners();">Click here to select winners!</button>
+    <button id="selectWinners" onclick="selectWinners();">Select winners!</button>
+    <button id="clearWinners" disabled="true" onclick="maybeClearWinners();">Clear winners list.</button>
+    <select id="sortBy" onclick="populateWinnersBox();">
+      <option value="no">Output winners in order of prize above.</option>
+      <option value="name">Sort alphabetically by name of winner.</option>
+      <option value="prize">Sort alphabetically by prize.</option>
+    </select>
     <br>
-    <textarea cols="60" rows="10" id="out" readonly="true">
-
+    <textarea cols="70" rows="20" id="out" readonly="true" placeholder="
       ↑↑↑
-      Click the button above to populate this field
-      based on the values in the two fields above.
-
-    </textarea>
+      Click the button above to select winners
+      once you have entered names and prizes in
+      the fields above.
+      "></textarea>
     <br>
-    <button onclick="insertData('prizes.txt', 'contestants');">Or just use some test data.</button>
+
+    <hr>
+    <h2> Testing </h2>
+    <button onclick="insertData('names.txt', 'contestants');">Insert some test names.</button>
+    <br>
+    <button onclick="insertData('prizes.txt', 'prizes');">Insert some test prizes.</button>
 
     <hr>
 
