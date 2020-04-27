@@ -47,7 +47,7 @@ Blank lines and stray spaces will be ignored.
     <h2> Winners </h2>
     <button id="selectWinners" onclick="selectWinners();">Select winners!</button>
     <button id="clearWinners" disabled="true" onclick="maybeClearWinners();">Clear winners list.</button>
-    <select id="sortBy" onclick="populateWinnersBox();">
+    <select id="sortBy" onchange="populateWinnersBox();">
       <option value="no">Output winners in order of prize above.</option>
       <option value="name">Sort alphabetically by name of winner.</option>
       <option value="prize">Sort alphabetically by prize.</option>
