@@ -5,12 +5,29 @@
   <body>
     <h1> picky disclaimers </h1>
 
+    <p>
+      This page has a bunch of detail about how this works.  (It works just
+      fine, thank you very much.)  But maybe you want to know more.
+    </p>
+
     <h2> How this works </h2>
     <p>
-      We shuffle the player input and assign the "top of the deck" to one prize
-      at a time.  All data resides in your web browser; the data is never
-      uploaded to the server.  The implementation of the "Click here" button is
-      entirely done on your computer.
+      We shuffle the player input (as if it was a bunch of names written on
+      index cards) and assign the "top of the deck" to one prize at a time.
+      The prizes aren't shuffled, so they stay in the order that you put them
+      in.  This could be helpful if you put the "grand prizes" at the top, or
+      the bottom if you like drama.  Prizes are assigned in order to the names
+      in the "deck" until we run out of prizes.
+    </p>
+    <p>
+      All data resides in your web browser; the data is never uploaded to the
+      server.  So, "the server" never has it.
+    </p>
+    <p>
+      If you decide to use this for a random drawing, it's a good idea to have
+      a witness, give a demo of the program, then reset the results, and click
+      "select winners" one time "for real"--and cut-and-paste into a document
+      for permanent storage.
     </p>
 
     <h2> Privacy Policy </h2>
@@ -24,8 +41,8 @@
       It makes no difference because we don't keep your data.
       You're welcome?
     </p>
-    
-    <h2> Randomness </h2>
+
+    <h2> About the shuffle </h2>
     <p>
       This version uses your browser's JavaScript's built-in Math.random() and
       the unfortunate realities of JavaScript IEEE-754 floating point.  That's
@@ -37,15 +54,22 @@
       the output of Math.random(); we have not verified the implementation of
       your browser's Math.random(); and the results are not publically
       verifyable or repeatable because we do not know the state of your
-      browser's PRNG.  So maybe you want a witness or something, I dunno.
+      browser's PRNG.
     </p>
     <p>
-      The names are shuffled using a Fisher-Yates shuffle.  This is known to be
-      generally fair if the RNG is fair, unless there are bugs.  A second
-      random-sort shuffle implementation, helping to guard against bugs in the
-      first shuffle.  This is known to have a small bias, but the
-      implementation is less likely to have bugs.  Combined, they do a good
-      [enough] job.
+      The names are shuffled twice.  One shuffle is a Fisher-Yates shuffle.
+      This is known to be generally fair if the RNG is fair, unless there are
+      bugs.  The second shuffle is a randomized-sort.  This is known to have a
+      small bias depending on how likely it is that the RNG picks the same
+      item, but Picky's implementation is less likely to have bugs.  Combined,
+      they [should] do a good [enough] job.
+    </p>
+
+    <h2> No Verification of results or Fitness for Purpose. </h2>
+    <p>
+      We do not provide verification or recording of results.  There are no
+      warranties of merchantability and fitness for a particular purpose
+      provided.  (This means it's on you.)
     </p>
 
     <h2> Ugliness </h2>
@@ -57,8 +81,9 @@
 
     <hr>
 
-    <a href=".">Back to picky</a>
+    <p>
+      <a href=".">Back to picky</a>
+    </p>
 
   </body>
 </html>
-    
