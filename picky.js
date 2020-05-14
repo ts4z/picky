@@ -76,6 +76,21 @@ function valueOrDefault(el, def="") {
     return def;
 }
 
+function valueAmong(el, values) {
+    var el = document.getElementById(el);
+    if (el !== null) {
+        for (var v in values) {
+            console.log("? el.value " + el.value);
+            console.log("? v " + v);
+            console.log("? values[v] " + values[v]);
+            if (el.value === values[v]) {
+                return el.value;
+            }
+        }
+    }
+    return values[0];
+}
+
 var selectedWinners = undefined;
 const winnersId = "out";
 
@@ -92,21 +107,47 @@ function maybeClearWinners() {
     }
 }
 
+function* pickNextWinner(contestants, tooManyPrizes) {
+    if (tooManyPrizes == "awardAgain") {
+        for (;;) {
+            var winners = shuffle(contestants);
+            for (var winner of winners) {
+                yield winner;
+            }
+        }
+    } else {
+        var winners = shuffle(contestants);
+        for (var winner of winners) {
+            yield winner;
+        }
+        for (;;) {
+            yield "(no winner)";
+        }
+    }
+}
+
 function selectWinners() {
-    var contestants = shuffle(expandMultipliers(splitLines(valueOrDefault("contestants"))));
+    var tooManyPrizes = valueAmong(
+        "tooManyPrizes", ["reportAnError", "awardAgain", "noWin"]);
+    var contestants = expandMultipliers(splitLines(
+        valueOrDefault("contestants")));
     var prizes = expandMultipliers(splitLines(valueOrDefault("prizes")));
     var out = document.getElementById(winnersId);
 
-    if (contestants.length < prizes.length) {
+    if (tooManyPrizes === "reportAnError" &&
+        contestants.length < prizes.length) {
         out.value =
             ("There are more prizes than contestants.\n" +
-             "That seems weird.");
+             "You can add more prizes, or change the\n" +
+             "setting above to decide what to do with the\n" +
+             "extra prizes.\n")
         return;
     }
 
+    var wgen = pickNextWinner(contestants, tooManyPrizes);
     var winners = [];
     for (var i = 0; i < prizes.length; i++) {
-        winners.push({natural: i, name: contestants[i], prize: prizes[i]});
+        winners.push({natural: i, name: wgen.next().value, prize: prizes[i]});
     }
 
     selectedWinners = winners;

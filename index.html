@@ -4,17 +4,29 @@
     <title> Picky </title>
   </head>
   <body>
-    <script src="picky.js?v=11"></script>
+    <script src="picky.js?v=14"></script>
     <h1> Picky </h1>
 
     <p>
       This pool will randomly assign prizes to a group of contestants.
-      There must be more contestants than prizes.
     </p>
     <p>
       To duplicate a line in either box, enter it like this:
       <tt style="background-color: #ddeedd">10x General Electric Toaster</tt>
       Blank lines and leading and trailing spaces are ignored.
+    </p>
+    <p>
+      If there are more contestants than prizes, some contestants won't
+      get a prize.
+    </p>
+    <p>
+      If there are more prizes than contestants,
+      <select id="tooManyPrizes">
+        <option value="reportAnError">an error will be reported</option>
+        <option value="awardAgain">give everyone a second chance
+          at leftover prizes</option>
+        <option value="noWin">list "no winner" for the extra prizes</option>
+      </select>.
     </p>
     
     <h2> Contestants </h2>
@@ -34,7 +46,7 @@ Enter prizes in this box, one per line.
 See above for multiplier if you have a multiple
 of a single prize."></textarea>
     <br>
-    
+   
     <h2> Winners </h2>
     <button id="selectWinners" onclick="selectWinners();">Select winners!</button>
     <button id="clearWinners" disabled="true" onclick="maybeClearWinners();">Clear winners list.</button>
